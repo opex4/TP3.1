@@ -15,19 +15,22 @@ namespace TP3._1
         {
             comboBox1.Items.AddRange(["2", "8", "10", "16"]);
             comboBox1.SelectedIndex = 2;
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            comboBox2.Items.AddRange([ "2", "8", "10", "16" ]);
+            comboBox2.Items.AddRange(["2", "8", "10", "16"]);
             comboBox2.SelectedIndex = 2;
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            comboBox3.Items.AddRange([ "2", "8", "10", "16" ]);
+            comboBox3.Items.AddRange(["2", "8", "10", "16"]);
             comboBox3.SelectedIndex = 2;
+            comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
-
+        string mistakeRead = "Ошибка считывания чисел:\n1.Все поля должны быть заполнены\n2.Числа должны быть введены с учётом основания их СС\n3.Числа должны быть целыми";
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -35,12 +38,10 @@ namespace TP3._1
                 Logic number1 = new Logic(textBox1.Text, Convert.ToInt32(comboBox1.Text), checkBox1.Checked);
                 Logic number2 = new Logic(textBox2.Text, Convert.ToInt32(comboBox2.Text), checkBox2.Checked);
                 Logic result = number1 + number2;
-                label1.Text = result.Result(Convert.ToInt32(comboBox3.Text));
-                //label1.Text = Result(result, Convert.ToInt32(comboBox3.Text));
-            }
+                label1.Text = result.Result(Convert.ToInt32(comboBox3.Text));            }
             catch (Exception)
             {
-                MessageBox.Show("Введите числа для расчёта");
+                MessageBox.Show(mistakeRead);
             }
         }
 
@@ -51,12 +52,10 @@ namespace TP3._1
                 Logic number1 = new Logic(textBox1.Text, Convert.ToInt32(comboBox1.Text), checkBox1.Checked);
                 Logic number2 = new Logic(textBox2.Text, Convert.ToInt32(comboBox2.Text), checkBox2.Checked);
                 Logic result = number1 - number2;
-                label1.Text = result.Result(Convert.ToInt32(comboBox3.Text));
-                //label1.Text = Result(result, Convert.ToInt32(comboBox3.Text));
-            }
+                label1.Text = result.Result(Convert.ToInt32(comboBox3.Text));            }
             catch (Exception)
             {
-                MessageBox.Show("Введите числа для расчёта");
+                MessageBox.Show(mistakeRead);
             }
         }
 
@@ -68,64 +67,25 @@ namespace TP3._1
                 Logic number2 = new Logic(textBox2.Text, Convert.ToInt32(comboBox2.Text), checkBox2.Checked);
                 Logic result = number1 * number2;
                 label1.Text = result.Result(Convert.ToInt32(comboBox3.Text));
-                //label1.Text = Result(result, Convert.ToInt32(comboBox3.Text));
-
             }
             catch (Exception)
             {
-                MessageBox.Show("Введите числа для расчёта");
+                MessageBox.Show(mistakeRead);
             }
         }
         private void button4_Click(object sender, EventArgs e)
         {
             try
             {
-                //Logic number1 = new Logic(textBox1.Text, Convert.ToInt32(comboBox1.Text), checkBox1.Checked);
-                //Logic number2 = new Logic(textBox2.Text, Convert.ToInt32(comboBox2.Text), checkBox2.Checked);
-                //if (number1 > number2)
-                //{
-                //    label1.Text = Result(number1, Convert.ToInt32(comboBox3.Text)) + " > " + Result(number2, Convert.ToInt32(comboBox3.Text));
-                //}
-                //else if (number1 < number2)
-                //{
-                //    label1.Text = Result(number1, Convert.ToInt32(comboBox3.Text)) + " < " + Result(number2, Convert.ToInt32(comboBox3.Text));
-                //}
-                //else
-                //{
-                //    label1.Text = Result(number1, Convert.ToInt32(comboBox3.Text)) + " = " + Result(number2, Convert.ToInt32(comboBox3.Text));
-                //}
                 Logic number1 = new Logic(textBox1.Text, Convert.ToInt32(comboBox1.Text), checkBox1.Checked);
                 Logic number2 = new Logic(textBox2.Text, Convert.ToInt32(comboBox2.Text), checkBox2.Checked);
-                if (number1 > number2)
-                {
-                    label1.Text = number1.Result(Convert.ToInt32(comboBox3.Text)) + " > " + number2.Result(Convert.ToInt32(comboBox3.Text));
-                }
-                else if (number1 < number2)
-                {
-                    label1.Text = number1.Result(Convert.ToInt32(comboBox3.Text)) + " < " + number2.Result(Convert.ToInt32(comboBox3.Text));
-                }
-                else
-                {
-                    label1.Text = number1.Result(Convert.ToInt32(comboBox3.Text)) + " = " + number2.Result(Convert.ToInt32(comboBox3.Text));
-                }
+                label1.Text = Logic.Compare(number1, number2, Convert.ToInt32(comboBox3.Text));
             }
             catch (Exception)
             {
-                MessageBox.Show("Введите числа для расчёта");
+                MessageBox.Show(mistakeRead);
             }
         }
-        //private string Result(Logic result, int baseSystem)
-        //{
-        //    if (result.Value < 0)
-        //    {
-        //        Logic logic = new Logic(Convert.ToString(Math.Abs(result.Value)), 10);
-        //        return ("-" + Convert.ToString(logic.Value, baseSystem));
-        //    }
-        //    else
-        //    {
-        //        return Convert.ToString(result.Value, baseSystem);
-        //    }
-        //}
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBox1.Clear();
@@ -188,6 +148,31 @@ namespace TP3._1
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
         {
 
         }

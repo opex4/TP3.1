@@ -70,5 +70,21 @@ namespace TP3._1
                 return Convert.ToString(this.Value, baseSystem);
             }
         }
+
+        public static string Compare(Logic number1, Logic number2, int baseSystem)
+        {
+            if (number1 > number2)
+            {
+                return number1.Result(baseSystem) + " > " + number2.Result(baseSystem);
+            }
+            else if (number1 < number2)
+            {
+                return number1.Result(baseSystem) + " < " + number2.Result(baseSystem);
+            }
+            else
+            {
+                return number1.Result(baseSystem) + " = " + number2.Result(baseSystem);
+            }
+        }
     }
 }
